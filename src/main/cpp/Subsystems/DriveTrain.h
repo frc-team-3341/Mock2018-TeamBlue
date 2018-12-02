@@ -19,6 +19,10 @@ private:
 	TalonSRX* right;
 
 public:
+	double getEncoderLeft();
+	double getEncoderRight();
+	void setLeft(double speed);
+	void setRight(double speed);
 	DriveTrain();
 	~DriveTrain(); //this is an optional deconstructor
 	void InitDefaultCommand() override;

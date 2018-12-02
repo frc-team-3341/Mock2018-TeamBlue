@@ -5,24 +5,21 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "OI.h"
+#pragma once
 
-#include <WPILib.h>
-#include "Commands/AutoLine.h"
+#include "../Robot.h"
+#include <Commands/Command.h>
 
-OI::OI() :
-leftStick(new Joystick(0)),
-rightStick(new Joystick(1)),
-leftTrigger(new JoystickButton(leftStick,1))
-{
-	// Process operator interface input here.
-	leftTrigger->WhenPressed(new AutoLine());
-}
+class AutoLine : public frc::Command {
 
-Joystick* OI::getLeftStick(){
-	return leftStick;
-}
+ private:
+  double distance = 2000;
 
-Joystick* OI::getRightStick(){
-	return rightStick;
-}
+ public:
+  AutoLine();
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
+};

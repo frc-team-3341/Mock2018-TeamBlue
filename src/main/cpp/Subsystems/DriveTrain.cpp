@@ -13,7 +13,9 @@
 DriveTrain::DriveTrain() : Subsystem("DriveTrain"),
 left(new TalonSRX(LEFT_MOTOR)),
 right(new TalonSRX(RIGHT_MOTOR)) {
-	left->SetInverted(true);
+	left->SetInverted(true);	
+	left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, 0, 10);
+	right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, 0, 10);
 }
 
 DriveTrain::~DriveTrain() {
@@ -30,6 +32,23 @@ void DriveTrain::tankDrive(double leftVal, double rightVal){
 	left->Set(ControlMode::PercentOutput, leftVal);
 	right->Set(ControlMode::PercentOutput, rightVal);
 
+}
+
+double DriveTrain::getEncoderLeft() {
+	return left->GetSensorCollection().GetQuadraturePosition();
+
+}
+
+double DriveTrain::getEncoderRight(){
+	return right->GetSensorCollection().GetQuadraturePosition();
+}
+
+void DriveTrain::setLeft(double speed){
+	left->Set(ControlMode::PercentOutput, speed);
+}
+
+void DriveTrain::setRight(double speed){
+	right->Set(ControlMode::PercentOutput, speed);
 }
 
 

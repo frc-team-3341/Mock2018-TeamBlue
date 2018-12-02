@@ -15,6 +15,7 @@ class OI {
 private:
 	frc::Joystick* leftStick;
 	frc::Joystick* rightStick;
+	frc::Button* leftTrigger;
 public:
 	OI();
 	Joystick* getLeftStick();
