@@ -15,14 +15,12 @@
 #include "OI.h"
 
 #include "Subsystems/DriveTrain.h"
+#include "Subsystems/Gate.h"
 
 class Robot : public frc::TimedRobot {
 public:
-	//step 9: creating a static instance of the subsystem
-	//subsystems have to be pointers (pointers are "*")
-	//this static instance is just an object of the drivetrain
+	static Gate* gate;
 	static DriveTrain* drive;
-	//convention---oi is at the bottom
 	static OI* oi;
 
 	void RobotInit() override;

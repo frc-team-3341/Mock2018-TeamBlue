@@ -7,21 +7,16 @@
 
 #pragma once
 
-#include "../Robot.h"
 #include <Commands/Command.h>
+#include "../Robot.h"
 
-class AutoLine : public frc::Command {
-
- private:
-  double distance;
-  double currentLeft;
-  double currentRight;
-
- public:
-  AutoLine(double dist);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+class GateClose : public frc::Command {
+public:
+	GateClose();
+	void Initialize() override;
+	void Execute() override;
+	bool IsFinished() override;
+	void End() override;
+	void Interrupted() override;
 };
+

@@ -5,23 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "Gate.h"
+#include "../RobotMap.h"
+#include <iostream>
 
-#include "../Robot.h"
-#include <Commands/Command.h>
+Gate::Gate() : Subsystem("Gate"), //ExampleSubsystem
+gate(new Servo(SERVO_PORT))
+{
+}
 
-class AutoLine : public frc::Command {
+void Gate::InitDefaultCommand() {
+	// Set the default command for a subsystem here.
+	// SetDefaultCommand(new MySpecialCommand());
+}
 
- private:
-  double distance;
-  double currentLeft;
-  double currentRight;
+// Put methods for controlling this subsystem
+// here. Call these from Commands.
 
- public:
-  AutoLine(double dist);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
-};
+void Gate::openGate(){
+	gate->Set(0);
+
+}
+
+void Gate::closeGate(){
+	gate->Set(0.7);
+}

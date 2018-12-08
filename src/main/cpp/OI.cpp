@@ -6,6 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 #include "OI.h"
+#include "Commands/GateOpen.h"
+#include "Commands/GateClose.h"
 
 #include <WPILib.h>
 #include "Commands/AutoLine.h"
@@ -13,10 +15,18 @@
 OI::OI() :
 leftStick(new Joystick(0)),
 rightStick(new Joystick(1)),
-leftTrigger(new JoystickButton(leftStick,1))
+leftTrigger(new JoystickButton(leftStick,1)),
+rightTrigger(new JoystickButton(rightStick, 1))
 {
 	// Process operator interface input here.
-	leftTrigger->WhenPressed(new AutoLine());
+	
+	//rightTrigger->WhenPressed(new AutoLine(2000));
+
+	
+	leftTrigger->WhenPressed(new GateOpen());
+	leftTrigger->WhenReleased(new GateClose());
+	
+	
 }
 
 Joystick* OI::getLeftStick(){

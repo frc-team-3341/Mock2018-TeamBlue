@@ -9,13 +9,18 @@
 
 #include <Commands/Scheduler.h>
 #include <SmartDashboard/SmartDashboard.h>
+#include "Commands/AutoLine.h"
 
-//step 10: these all need to be pointers
+
+Gate* Robot::gate;
 DriveTrain* Robot::drive;
 OI* Robot::oi;
 
 void Robot::RobotInit() {
+	
+	m_chooser.AddObject("auto", new AutoLine(2000));
 	frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+
 }
 
 /**
@@ -25,9 +30,9 @@ void Robot::RobotInit() {
  */
 void Robot::DisabledInit() {
 
-	//step 11:
 	drive = new DriveTrain();
 	oi = new OI();
+	gate = new Gate();
 }
 
 void Robot::DisabledPeriodic() {
@@ -54,6 +59,7 @@ void Robot::AutonomousInit() {
 	// 	m_autonomousCommand = &m_defaultAuto;
 	// }
 
+	
 	m_autonomousCommand = m_chooser.GetSelected();
 
 	if (m_autonomousCommand != nullptr) {

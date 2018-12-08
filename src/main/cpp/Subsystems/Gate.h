@@ -8,24 +8,18 @@
 #pragma once
 
 #include <Commands/Subsystem.h>
-#include "ctre/Phoenix.h"
-#include "../RobotMap.h"
+#include "WPILib.h"
 
-class DriveTrain : public frc::Subsystem {
+class Gate : public frc::Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	TalonSRX* left;
-	TalonSRX* right;
+	Servo* gate;
 
 public:
-	double getEncoderLeft();
-	double getEncoderRight();
-	void setLeft(double speed);
-	void setRight(double speed);
-	void resetEncoders();
-	DriveTrain();
-	~DriveTrain(); //this is an optional deconstructor
+	Gate();
 	void InitDefaultCommand() override;
-	void tankDrive(double leftVal, double rightVal);
+	void openGate();
+	void closeGate();
 };
+

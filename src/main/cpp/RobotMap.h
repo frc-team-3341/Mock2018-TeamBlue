@@ -22,8 +22,6 @@
 constexpr int LEFT_MOTOR = 2;
 constexpr int RIGHT_MOTOR = 3;
 
-//SERVO_PORT IS NOT FINAL
-//needs to be changed to its respective port once known
 constexpr int SERVO_PORT = 0;
 
 // If you are using multiple modules, make sure to define both the port

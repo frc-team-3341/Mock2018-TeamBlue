@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "DriveTrain.h"
-#include "../RobotMap.h"
+#include <iostream>
 
 #include "../Commands/TankDrive.h"
 
@@ -18,6 +18,7 @@ right(new TalonSRX(RIGHT_MOTOR)) {
 	
 	left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
 	right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
+
 }
 
 DriveTrain::~DriveTrain() {
@@ -54,8 +55,14 @@ void DriveTrain::setRight(double speed){
 }
 
 void DriveTrain::resetEncoders(){
-	left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
-	right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
+	//left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
+	//right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
+	
+	//changed
+	left->SetSelectedSensorPosition(0,0,10);
+	right->SetSelectedSensorPosition(0,0,10);
+
+	std::cout<<left->GetSensorCollection().GetQuadraturePosition()<<std::endl;
 }
 
 // Put methods for controlling this subsystem
