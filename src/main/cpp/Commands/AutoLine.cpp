@@ -13,9 +13,7 @@ using namespace std;
 AutoLine::AutoLine(double dist) {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(Robot::chassis.get());
-  distance = dist;
-  currentLeft = Robot::drive->getEncoderLeft() + distance;
-  currentRight = Robot::drive->getEncoderRight() + distance;
+  std::cout << "ENCODERS" << Robot::drive->getEncoderLeft() << std::endl;
 }
 
 // Called just before this Command runs the first time
@@ -23,12 +21,13 @@ void AutoLine::Initialize() {
 
   //set encoder values to zero
   Robot::drive->resetEncoders();
-
+  std::cout << "ENCODERS" << Robot::drive->getEncoderLeft() << std::endl;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void AutoLine::Execute() {
 
+/*
   cout<< Robot::drive->getEncoderLeft() <<endl;
   
   if(Robot::drive->getEncoderLeft()>currentLeft){
@@ -44,18 +43,20 @@ void AutoLine::Execute() {
   else{
     Robot::drive->tankDrive(0.50, 0.50);
   }
-  
+  */
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool AutoLine::IsFinished() 
-{
+bool AutoLine::IsFinished() {
 
+  return false;
+/*
   if(Robot::drive->getEncoderLeft() > currentLeft && Robot::drive->getEncoderRight() > currentRight){
     return true;
   }
    return false;
-
+*/
+  
 }
 
 // Called once after isFinished returns true

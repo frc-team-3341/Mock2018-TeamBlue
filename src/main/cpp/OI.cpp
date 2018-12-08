@@ -16,11 +16,10 @@ OI::OI() :
 leftStick(new Joystick(0)),
 rightStick(new Joystick(1)),
 leftTrigger(new JoystickButton(leftStick,1)),
-rightTrigger(new JoystickButton(rightStick, 1))
-{
+rightTrigger(new JoystickButton(rightStick, 1)){
 	// Process operator interface input here.
 	
-	//rightTrigger->WhenPressed(new AutoLine(2000));
+	rightTrigger->WhenPressed(new AutoLine(2000));
 
 	
 	leftTrigger->WhenPressed(new GateOpen());

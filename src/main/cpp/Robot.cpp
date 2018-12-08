@@ -18,7 +18,7 @@ OI* Robot::oi;
 
 void Robot::RobotInit() {
 	
-	m_chooser.AddObject("auto", new AutoLine(2000));
+	//m_chooser.AddObject("auto", new AutoLine(2000));
 	frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
 }
