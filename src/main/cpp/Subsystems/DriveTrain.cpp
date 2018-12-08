@@ -13,9 +13,11 @@
 DriveTrain::DriveTrain() : Subsystem("DriveTrain"),
 left(new TalonSRX(LEFT_MOTOR)),
 right(new TalonSRX(RIGHT_MOTOR)) {
-	left->SetInverted(true);	
-	left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, 0, 10);
-	right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, 0, 10);
+		
+	right->SetInverted(true);
+	
+	left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
+	right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
 }
 
 DriveTrain::~DriveTrain() {
@@ -51,6 +53,10 @@ void DriveTrain::setRight(double speed){
 	right->Set(ControlMode::PercentOutput, speed);
 }
 
+void DriveTrain::resetEncoders(){
+	left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
+	right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

@@ -23,6 +23,7 @@ public:
 	double getEncoderRight();
 	void setLeft(double speed);
 	void setRight(double speed);
+	void resetEncoders();
 	DriveTrain();
 	~DriveTrain(); //this is an optional deconstructor
 	void InitDefaultCommand() override;

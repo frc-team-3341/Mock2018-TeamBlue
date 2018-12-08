@@ -7,32 +7,54 @@
 
 #include "AutoLine.h"
 
+#include <iostream>
+using namespace std;
+
 AutoLine::AutoLine() {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void AutoLine::Initialize() {}
+void AutoLine::Initialize() {
+  /*
+  //set encoder values to zero
+  Robot::drive->resetEncoders();
+*/
+}
 
 // Called repeatedly when this Command is scheduled to run
 void AutoLine::Execute() {
-  Robot::drive->tankDrive(0.75, 0.75);
+  //set encoder values to zero
+  Robot::drive->resetEncoders();
+
+  cout<< Robot::drive->getEncoderLeft() <<endl;
+
   if(Robot::drive->getEncoderLeft()>distance){
     Robot::drive->setLeft(0);
   }
+  else{
+    Robot::drive->tankDrive(0.50, 0.50);
+  }
+
   if(Robot::drive->getEncoderRight()>distance){
     Robot::drive->setRight(0);
   }
+  else{
+    Robot::drive->tankDrive(0.50, 0.50);
+  }
+  
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutoLine::IsFinished() 
 {
+
   if(Robot::drive->getEncoderLeft() > distance && Robot::drive->getEncoderRight() > distance){
     return true;
   }
-   return false; 
+   return false;
+
 }
 
 // Called once after isFinished returns true
