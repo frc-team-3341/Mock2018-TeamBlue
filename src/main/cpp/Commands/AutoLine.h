@@ -14,8 +14,8 @@ class AutoLine : public frc::Command {
 
  private:
   double distance;
-  double currentLeft;
-  double currentRight;
+  double finishedLeft;
+  double finishedRight;
 
  public:
   AutoLine(double dist);

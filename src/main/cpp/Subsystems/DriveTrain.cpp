@@ -55,14 +55,14 @@ void DriveTrain::setRight(double speed){
 }
 
 void DriveTrain::resetEncoders(){
-	//left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
-	//right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
+	left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
+	right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
 	
 	//changed
-	left->SetSelectedSensorPosition(0,0,10);
-	right->SetSelectedSensorPosition(0,0,10);
+	//left->SetSelectedSensorPosition(0,0,10);
+	//right->SetSelectedSensorPosition(0,0,10);
 
-	std::cout<<left->GetSensorCollection().GetQuadraturePosition()<<std::endl;
+	//std::cout<<left->GetSensorCollection().GetQuadraturePosition()<<std::endl;
 }
 
 // Put methods for controlling this subsystem

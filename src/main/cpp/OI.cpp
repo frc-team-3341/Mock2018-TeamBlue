@@ -19,7 +19,7 @@ leftTrigger(new JoystickButton(leftStick,1)),
 rightTrigger(new JoystickButton(rightStick, 1)){
 	// Process operator interface input here.
 	
-	rightTrigger->WhenPressed(new AutoLine(2000));
+	rightTrigger->WhenPressed(new AutoLine(5000));
 
 	
 	leftTrigger->WhenPressed(new GateOpen());

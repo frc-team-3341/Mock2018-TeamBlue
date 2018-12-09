@@ -31,8 +31,6 @@ bool GateClose::IsFinished() {
 
 // Called once after isFinished returns true
 void GateClose::End() {
-	std::cout << "drop ball success" << std::endl;
-
 }
 
 // Called when another command which requires one or more of the same
