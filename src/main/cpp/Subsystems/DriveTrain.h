@@ -9,6 +9,7 @@
 
 #include <Commands/Subsystem.h>
 #include "ctre/Phoenix.h"
+#include "AHRS.h"
 #include "../RobotMap.h"
 
 class DriveTrain : public frc::Subsystem {
@@ -17,12 +18,15 @@ private:
 	// for methods that implement subsystem capabilities
 	TalonSRX* left;
 	TalonSRX* right;
+	AHRS* gyro;
 
 public:
 	double getEncoderLeft();
 	double getEncoderRight();
+	void turn(double ticks);
 	void setLeft(double speed);
 	void setRight(double speed);
+	double getAngle();
 	void resetEncoders();
 	DriveTrain();
 	~DriveTrain(); //this is an optional deconstructor

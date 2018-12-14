@@ -7,15 +7,16 @@
 
 #include "DriveTrain.h"
 #include <iostream>
-
+#include "AHRS.h"
 #include "../Commands/TankDrive.h"
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain"),
 left(new TalonSRX(LEFT_MOTOR)),
-right(new TalonSRX(RIGHT_MOTOR)) {
+right(new TalonSRX(RIGHT_MOTOR)),
+gyro(new AHRS(SPI::Port::kMXP)) {
 		
 	right->SetInverted(true);
-	
+	gyro->ZeroYaw();
 	left->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
 	right->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Absolute, 0, 10);
 
@@ -37,10 +38,30 @@ void DriveTrain::tankDrive(double leftVal, double rightVal){
 
 }
 
+void DriveTrain::turn(double ticks)
+{
+	if (ticks < 0){
+		while (gyro->GetYaw() > ticks){
+			this->tankDrive(0.5, -0.5);
+		}
+	}
+	else{
+		while (gyro->GetYaw() < ticks){
+			this->tankDrive(-0.5, 0.5);
+		}
+	}
+	
+}
+
+double DriveTrain::getAngle(){
+	return gyro->GetYaw();
+}
+
 double DriveTrain::getEncoderLeft() {
 	return left->GetSensorCollection().GetQuadraturePosition();
 
 }
+
 
 double DriveTrain::getEncoderRight(){
 	return right->GetSensorCollection().GetQuadraturePosition();
