@@ -13,15 +13,14 @@
 #include "Commands/AutoLine.h"
 
 OI::OI() :
-leftStick(new Joystick(0)),
-rightStick(new Joystick(1)),
-leftTrigger(new JoystickButton(leftStick,1)),
-rightTrigger(new JoystickButton(rightStick, 1)){
+leftStick(new Joystick(1)),
+rightStick(new Joystick(0)),
+leftTrigger(new JoystickButton(leftStick,1))//,
+//rightTrigger(new JoystickButton(rightStick, 1))
+{
 	// Process operator interface input here.
 	
-	rightTrigger->WhenPressed(new AutoLine(5000));
-
-	
+	//rightTrigger->WhenPressed(new AutoLine(5000));
 	leftTrigger->WhenPressed(new GateOpen());
 	leftTrigger->WhenReleased(new GateClose());
 	

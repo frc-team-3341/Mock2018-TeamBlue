@@ -12,10 +12,9 @@
 #include <SmartDashboard/SendableChooser.h>
 #include <TimedRobot.h>
 
-#include "OI.h"
-
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/Gate.h"
+#include "OI.h"
 
 class Robot : public frc::TimedRobot {
 public:

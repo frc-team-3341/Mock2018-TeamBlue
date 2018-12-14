@@ -17,8 +17,7 @@ DriveTrain* Robot::drive;
 OI* Robot::oi;
 
 void Robot::RobotInit() {
-	
-	//m_chooser.AddObject("auto", new AutoLine(2000));
+	//m_chooser.AddObject("Auto", new AutoLine(2000));
 	frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
 }
@@ -60,7 +59,8 @@ void Robot::AutonomousInit() {
 	// }
 
 	
-	m_autonomousCommand = m_chooser.GetSelected();
+	//m_autonomousCommand = m_chooser.GetSelected();
+	m_autonomousCommand = new AutoLine(20000);
 
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand->Start();

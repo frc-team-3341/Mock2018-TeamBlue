@@ -16,7 +16,7 @@ private:
 	frc::Joystick* leftStick;
 	frc::Joystick* rightStick;
 	frc::Button* leftTrigger;
-	frc::Button* rightTrigger;
+	//frc::Button* rightTrigger;
 public:
 	OI();
 	Joystick* getLeftStick();
