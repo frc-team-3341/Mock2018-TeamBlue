@@ -23,8 +23,9 @@ private:
 public:
 	double getEncoderLeft();
 	double getEncoderRight();
-	void turn(double ticks);
+	void turn(double angle);
 	void setLeft(double speed);
+	void resetGyro();
 	void setRight(double speed);
 	double getAngle();
 	void resetEncoders();

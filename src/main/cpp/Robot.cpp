@@ -10,6 +10,8 @@
 #include <Commands/Scheduler.h>
 #include <SmartDashboard/SmartDashboard.h>
 #include "Commands/AutoLine.h"
+#include "Commands/Turn.h"
+#include "Commands/AllPaths.h"
 
 
 Gate* Robot::gate;
@@ -20,6 +22,9 @@ void Robot::RobotInit() {
 	//m_chooser.AddObject("Auto", new AutoLine(2000));
 	frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
+	drive = new DriveTrain();
+	oi = new OI();
+	gate = new Gate();
 }
 
 /**
@@ -29,9 +34,8 @@ void Robot::RobotInit() {
  */
 void Robot::DisabledInit() {
 
-	drive = new DriveTrain();
-	oi = new OI();
-	gate = new Gate();
+	
+	
 }
 
 void Robot::DisabledPeriodic() {
@@ -60,7 +64,9 @@ void Robot::AutonomousInit() {
 
 	
 	//m_autonomousCommand = m_chooser.GetSelected();
-	m_autonomousCommand = new AutoLine(20000);
+	//m_autonomousCommand = new AutoLine(24900);
+	//m_autonomousCommand = new Turn(85);
+	m_autonomousCommand = new AllPaths();
 
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand->Start();

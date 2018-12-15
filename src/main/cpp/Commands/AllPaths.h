@@ -7,18 +7,11 @@
 
 #pragma once
 
-#include <Commands/Command.h>
-#include "../Robot.h"
+#include <Commands/CommandGroup.h>
+#include "AutoLine.h"
+#include "GateOpen.h"
 
-class Turn : public frc::Command {
- private:
-  double angle;
-
+class AllPaths : public frc::CommandGroup {
  public:
-  Turn(double m_angle);
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+  AllPaths();
 };

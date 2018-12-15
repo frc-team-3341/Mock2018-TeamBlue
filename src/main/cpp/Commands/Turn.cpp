@@ -5,22 +5,25 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Commands/Turn.h"
+#include "Turn.h"
 
 
-Turn::Turn() {
+Turn::Turn(double m_angle) {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(Robot::chassis.get());
+  angle = m_angle;
   Requires(Robot::drive);
 }
 
 // Called just before this Command runs the first time
-void Turn::Initialize() {}
+void Turn::Initialize() {
+  Robot::drive->resetGyro();
+}
 
 // Called repeatedly when this Command is scheduled to run
 void Turn::Execute() 
 {
-  drive->turn(2000);
+  Robot::drive->turn(angle);
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -32,22 +32,28 @@ void DriveTrain::InitDefaultCommand() {
 	SetDefaultCommand(new TankDrive());
 }
 
+void DriveTrain::resetGyro(){
+	gyro->ZeroYaw();
+}
+
 void DriveTrain::tankDrive(double leftVal, double rightVal){
 	left->Set(ControlMode::PercentOutput, leftVal);
 	right->Set(ControlMode::PercentOutput, rightVal);
 
 }
 
-void DriveTrain::turn(double ticks)
+void DriveTrain::turn(double angle)
 {
-	if (ticks < 0){
-		while (gyro->GetYaw() > ticks){
-			this->tankDrive(0.5, -0.5);
+	if (angle < 0){
+		while (gyro->GetYaw() > angle){
+			this->tankDrive(-0.25, 0.25);
+			std::cout<<gyro->GetYaw()<<std::endl;
 		}
 	}
 	else{
-		while (gyro->GetYaw() < ticks){
-			this->tankDrive(-0.5, 0.5);
+		while (gyro->GetYaw() < angle){
+			this->tankDrive(0.25, -0.25);
+			std::cout<<gyro->GetYaw()<<std::endl;
 		}
 	}
 	
