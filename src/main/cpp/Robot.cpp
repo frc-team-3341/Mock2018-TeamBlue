@@ -66,7 +66,7 @@ void Robot::AutonomousInit() {
 	//m_autonomousCommand = m_chooser.GetSelected();
 	//m_autonomousCommand = new AutoLine(24900);
 	//m_autonomousCommand = new Turn(85);
-	m_autonomousCommand = new AllPaths();
+	m_autonomousCommand = new AllPaths(4);
 
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand->Start();

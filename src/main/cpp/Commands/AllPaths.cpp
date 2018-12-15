@@ -5,17 +5,56 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Commands/AllPaths.h"
+#include "AllPaths.h"
 
-AllPaths::AllPaths() {
+
+AllPaths::AllPaths(int pathNum) {
   // Add Commands here:
   // e.g. AddSequential(new Command1());
   //      AddSequential(new Command2());
   // these will run in order.
-
+if (pathNum == 1){
+  AddSequential(new AutoLine(20000));
+  AddSequential(new Turn(-60));
+  AddSequential(new AutoLine(4900));
+  AddSequential(new GateOpen());
+}
+else if (pathNum = 2){
+  AddSequential(new AutoLine(20000));
+  AddSequential(new Turn(-40));
+  AddSequential(new AutoLine(4900));
+  AddSequential(new GateOpen());
+}
+else if (pathNum = 3){
+  AddSequential(new AutoLine(20000));
+  AddSequential(new Turn(-20));
+  AddSequential(new AutoLine(4900));
+  AddSequential(new GateOpen());
+}
+else if (pathNum = 4){
   AddSequential(new AutoLine(24900));
   AddSequential(new GateOpen());
-
+  
+}
+else if (pathNum = 5){
+  AddSequential(new AutoLine(20000));
+  AddSequential(new Turn(20));
+  AddSequential(new AutoLine(4900));
+  AddSequential(new GateOpen());
+}
+else if (pathNum = 6){
+  AddSequential(new AutoLine(20000));
+  AddSequential(new Turn(40));
+  AddSequential(new AutoLine(4900));
+  AddSequential(new GateOpen());
+}
+else if (pathNum = 7){
+  AddSequential(new AutoLine(20000));
+  AddSequential(new Turn(60));
+  AddSequential(new AutoLine(4900));
+  AddSequential(new GateOpen());
+}
+  
   // To run multiple commands at the same time,
   // use AddParallel()
   // e.g. AddParallel(new Command1());

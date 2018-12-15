@@ -9,9 +9,11 @@
 
 #include <Commands/CommandGroup.h>
 #include "AutoLine.h"
+#include "Turn.h"
+#include "WPILib.h"
 #include "GateOpen.h"
 
 class AllPaths : public frc::CommandGroup {
  public:
-  AllPaths();
+  AllPaths(int pathNum);
 };
