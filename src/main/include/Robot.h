@@ -13,6 +13,8 @@
 #include "Subsystems/ServoMech.h"
 
 #include "OI.h"
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/core.hpp>
 #include "Subsystems/DriveTrain.h"
 
 class Robot : public frc::TimedRobot {
@@ -21,7 +23,6 @@ class Robot : public frc::TimedRobot {
   static DriveTrain* drive;
   static OI* m_oi;
   static ServoMech* servo;
-   
 
   void RobotInit() override;
   void RobotPeriodic() override;
